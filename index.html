@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; img-src 'none'; connect-src 'self';">
+  <title>小学生 漢字練習シート</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 入力画面 -->
+  <div id="input-screen">
+    <header>
+      <h1>小学生<br>漢字れんしゅうシート</h1>
+      <p class="subtitle">学年から選ぶか、直接入力してシートを作ろう</p>
+    </header>
+    <main>
+      <div class="name-field">
+        <label for="user-name">お名前</label>
+        <input type="text" id="user-name" placeholder="れい: たろう" autocomplete="off">
+      </div>
+
+      <!-- 学年タブ -->
+      <section class="block">
+        <h2 class="block-title">学年から選ぶ</h2>
+        <div id="grade-tabs" class="grade-tabs"></div>
+        <div class="grid-toolbar">
+          <span id="selected-count">0字 選択中</span>
+          <button type="button" id="select-all-btn" class="mini-btn">この学年を全選択</button>
+          <button type="button" id="clear-btn" class="mini-btn">選択をクリア</button>
+        </div>
+        <div id="kanji-grid" class="kanji-grid"></div>
+      </section>
+
+      <!-- 自由入力 -->
+      <section class="block">
+        <h2 class="block-title">直接入力（任意）</h2>
+        <textarea id="free-input" rows="3" placeholder="れい: 新型車両　※ 漢字以外は無視されます"></textarea>
+      </section>
+
+      <!-- 補助情報トグル -->
+      <section class="block options-block">
+        <h2 class="block-title">ワークシートの設定</h2>
+        <label class="opt-label">
+          <input type="checkbox" id="opt-reading">
+          <span>読み仮名（音・訓）を表示</span>
+        </label>
+        <label class="opt-label">
+          <input type="checkbox" id="opt-strokes">
+          <span>画数を表示</span>
+        </label>
+      </section>
+
+      <div id="error-message" class="hidden"></div>
+      <button id="generate-btn">練習シートを作る！</button>
+
+      <!-- 履歴 -->
+      <div id="history-section" class="hidden">
+        <h2 class="history-title">さいきんの練習</h2>
+        <ul id="history-list"></ul>
+      </div>
+    </main>
+  </div>
+
+  <!-- 練習シート画面 -->
+  <div id="practice-sheet" class="hidden">
+    <div class="sheet-controls no-print">
+      <button id="back-btn">もどる</button>
+      <button id="print-btn">印刷する</button>
+    </div>
+    <div id="print-date" class="print-only"></div>
+    <div id="sheet-content"></div>
+  </div>
+
+  <!-- 使い方 -->
+  <section class="usage-section no-print">
+    <h2 class="usage-title">使い方</h2>
+    <ol class="usage-list">
+      <li><strong>お名前</strong>を入れると、お名前ごとに履歴が分かれます。</li>
+      <li>学年タブから漢字をクリックで選ぶか、直接入力欄に漢字を貼り付けて使います。</li>
+      <li><strong>ワークシートの設定</strong>で読み仮名や画数の表示をON／OFFできます。</li>
+      <li>できあがったシートは「印刷する」ボタンで印刷できます。</li>
+    </ol>
+    <div class="usage-note">
+      <p>履歴（さいきんの練習）は お使いのブラウザだけに保存されます。サーバーには送られないので安心してご利用ください。</p>
+      <p class="data-source">漢字データ出典: <a href="https://kanjiapi.dev/" target="_blank" rel="noopener">kanjiapi.dev</a>（KANJIDIC2 派生、CC BY-SA 4.0）／学年配当：文部科学省「学年別漢字配当表」（2017年告示・2020年度実施）</p>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer no-print">
+    <p>&copy; 2026 newboldaction. All rights reserved.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
