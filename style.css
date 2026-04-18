@@ -558,6 +558,135 @@ body {
   padding: 0.5cm 1.5cm 0;
 }
 
+/* ===== スマホ対応（画面表示のみ、印刷時は @media print で4cm固定に上書き） ===== */
+@media (max-width: 600px) {
+  /* 入力画面 */
+  #input-screen {
+    padding: 1rem 0.8rem;
+  }
+  #input-screen h1 {
+    font-size: 1.6rem;
+  }
+  .subtitle {
+    font-size: 0.95rem;
+  }
+  .name-field {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .name-field label {
+    width: 100%;
+    font-size: 1rem;
+  }
+  #user-name {
+    font-size: 1.05rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .block {
+    padding: 0.9rem 0.8rem;
+    border-radius: 12px;
+  }
+  .block-title {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .grade-tab {
+    min-width: 48px;
+    padding: 0.5rem 0.3rem;
+    font-size: 0.9rem;
+  }
+
+  .grid-toolbar {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  #selected-count {
+    flex: 1 1 100%;
+    text-align: left;
+  }
+  .mini-btn {
+    flex: 1;
+    font-size: 0.78rem;
+    padding: 0.4rem 0.4rem;
+  }
+
+  .kanji-grid {
+    grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+    gap: 0.25rem;
+    max-height: 260px;
+    padding: 0.3rem;
+  }
+  .kanji-cell {
+    font-size: 1.2rem;
+    padding: 0.3rem 0;
+  }
+
+  .opt-label {
+    font-size: 0.95rem;
+  }
+
+  #generate-btn {
+    font-size: 1.15rem;
+    padding: 0.9rem;
+  }
+
+  /* シート画面: 4cmマスを画面幅にフィットさせて縮小表示 */
+  .sheet-controls {
+    padding: 0.7rem 0.8rem;
+  }
+  .sheet-controls button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+  #sheet-content {
+    padding: 0.6rem 0.4rem;
+  }
+  .word-header {
+    font-size: 1rem;
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .practice-row {
+    margin-bottom: 0.3rem;
+  }
+  /* 6マス＋ラベル＋5つのgapが画面幅に収まるよう vw ベースに */
+  .row-label {
+    width: 8vw;
+    font-size: 5vw;
+  }
+  .practice-squares {
+    gap: 2px;
+    flex: 1;
+  }
+  .square {
+    /* (100vw - row-label 8vw - padding 0.8vw*2 - gap 2px*5) / 6 */
+    width: calc((100vw - 8vw - 1.6rem - 10px) / 6);
+    height: calc((100vw - 8vw - 1.6rem - 10px) / 6);
+    font-size: calc((100vw - 8vw - 1.6rem - 10px) / 6 * 0.72);
+    border-width: 1.5px;
+  }
+  .square-reading {
+    top: 2px;
+    left: 2px;
+    font-size: 8px;
+  }
+  .square-strokes {
+    bottom: 2px;
+    right: 2px;
+    font-size: 8px;
+  }
+
+  .usage-section {
+    padding: 0 0.8rem 1rem;
+  }
+  .usage-list {
+    font-size: 0.9rem;
+    padding-left: 1.2rem;
+  }
+}
+
 /* ===== 印刷スタイル ===== */
 @media print {
   body {
