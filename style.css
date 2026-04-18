@@ -317,6 +317,13 @@ body {
   background: #1E88E5;
 }
 
+.sheet-hint {
+  font-size: 0.85rem;
+  color: #888;
+  margin-left: 0.5rem;
+  align-self: center;
+}
+
 /* ===== シート本体 ===== */
 #sheet-content {
   padding: 1.5cm;
@@ -635,10 +642,17 @@ body {
   /* シート画面: 4cmマスを画面幅にフィットさせて縮小表示 */
   .sheet-controls {
     padding: 0.7rem 0.8rem;
+    flex-wrap: wrap;
   }
   .sheet-controls button {
     font-size: 0.9rem;
     padding: 0.5rem 1rem;
+  }
+  .sheet-hint {
+    flex-basis: 100%;
+    margin-left: 0;
+    margin-top: 0.3rem;
+    font-size: 0.78rem;
   }
   #sheet-content {
     padding: 0.6rem 0.4rem;
