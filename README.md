@@ -17,6 +17,7 @@
 
 - **学年配当**: 文部科学省「学年別漢字配当表」（2017年[平成29年]告示・2020年度全面実施、**1026字**版）
 - **読み・画数**: [kanjiapi.dev](https://kanjiapi.dev/)（KANJIDIC2派生、CC BY-SA 4.0）
+- **書き順SVG**: [KanjiVG](https://kanjivg.tagaini.net/) © Ulrich Apel（CC BY-SA 3.0）
 
 都道府県名由来の20字（茨・媛・岡・潟・岐・熊・香・佐・埼・崎・滋・鹿・縄・井・沖・栃・奈・梨・阪・阜）も2020年改訂どおり小4に配置しています。
 
@@ -49,3 +50,4 @@ shogakusei-kanji-practice/
 
 - 本プロジェクトのソースコード: MIT License
 - 同梱の漢字データ（`data/kyoiku-kanji.json`）: KANJIDIC2 に由来するため [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) に従います
+- 同梱の書き順SVG（`data/kanjivg/*.svg`）: KanjiVG © Ulrich Apel に由来するため [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) に従います

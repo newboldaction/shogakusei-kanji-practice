@@ -87,7 +87,13 @@ function createPracticeRow(char, opts) {
 
   const label = document.createElement('div');
   label.className = 'row-label';
-  label.textContent = char;
+  const hex = char.codePointAt(0).toString(16).padStart(5, '0');
+  const img = document.createElement('img');
+  img.className = 'stroke-order';
+  img.src = `data/kanjivg/${hex}.svg`;
+  img.alt = char;
+  img.loading = 'lazy';
+  label.appendChild(img);
   row.appendChild(label);
 
   const squares = document.createElement('div');

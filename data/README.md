@@ -25,6 +25,9 @@
 ## 出典
 
 - **読み・画数**: [kanjiapi.dev](https://kanjiapi.dev/)（KANJIDIC2 派生、Creative Commons Attribution-ShareAlike 4.0）
+- **書き順SVG (`data/kanjivg/`)**: [KanjiVG](https://kanjivg.tagaini.net/) © Ulrich Apel, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
+  - リリース: r20250816（main版を取得後、教育漢字1026字分を抽出）
+  - 改変内容: ライセンスコメント・DOCTYPE・kvg属性を除去、書き順番号のサイズを大きく（font-size: 8 → 18）、色を赤＋白縁取りに変更
 - **学年配当**: 文部科学省「学年別漢字配当表」（2017年[平成29年]告示・2020年度全面実施、1026字版）
   - 参照: Wikipedia日本語版「[学年別漢字配当表](https://ja.wikipedia.org/wiki/%E5%AD%A6%E5%B9%B4%E5%88%A5%E6%BC%A2%E5%AD%97%E9%85%8D%E5%BD%93%E8%A1%A8)」
 
