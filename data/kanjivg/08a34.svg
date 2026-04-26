@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_08a34" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:08a34">
+	<g id="kvg:08a34-g1">
+		<path id="kvg:s-s1" stroke="#E53935" d="M26.43,14.5c2.65,1.77,6.84,7.25,7.5,10"/>
+		<path id="kvg:s-s2" stroke="#FB8C00" d="M12.62,34.83c1.61,0.53,3.72,0.26,5.39,0.16C25.82,34.55,34.6,33.45,41,32.5c1.43-0.21,3.42-0.36,4.84-0.08"/>
+		<path id="kvg:s-s3" stroke="#FDD835" d="M19.68,48.31c1.22,0.35,2.81,0.16,4.07,0.1c4.08-0.21,9.22-1.03,13.38-1.65c1.45-0.22,3.19-0.5,4.64-0.25"/>
+		<path id="kvg:s-s4" stroke="#43A047" d="M21.3,61.58c1.13,0.35,2.66,0.15,3.84,0.08c3.72-0.21,9.02-1.09,13.12-1.79c1.26-0.21,2.82-0.38,4.07-0.15"/>
+		<g id="kvg:08a34-g2">
+			<path id="kvg:s-s5" stroke="#1E88E5" d="M19.51,74.3c0.84,0.84,1.23,1.85,1.45,2.84c0.73,3.3,1.56,8.49,2.32,13.1c0.25,1.51,0.49,2.96,0.72,4.26"/>
+			<path id="kvg:s-s6" stroke="#8E24AA" d="M21.59,75.44c6.24-0.79,12.32-1.6,18.05-2.39c2.6-0.36,3.83,0.29,3.28,2.99c-0.74,3.6-1.67,7.23-3.14,13.26"/>
+			<path id="kvg:s-s7" stroke="#EC407A" d="M24.79,91.99c4.02-0.41,8.25-1.01,13.22-1.54c1.21-0.13,2.61-0.17,3.82-0.17"/>
+		</g>
+	</g>
+	<g id="kvg:08a34-g3">
+		<g id="kvg:08a34-g4">
+			<path id="kvg:s-s8" stroke="#00ACC1" d="M79.14,14.5c0.15,1.16-0.19,1.91-1.01,2.75c-4.88,5-10.75,9.75-19.83,14.39"/>
+			<path id="kvg:s-s9" stroke="#795548" d="M54.84,31.79c1.19,1.19,1.35,2.3,1.37,4.29c0.29,33.68-1.76,45.54-8.19,54.7"/>
+			<path id="kvg:s-s10" stroke="#546E7A" d="M58.78,44.75c1.97,0,3.28-0.23,4.53-0.39c8.36-1.04,18.98-2.78,27.74-4.27c1.91-0.33,4.07-0.79,6-0.31"/>
+			<path id="kvg:s-s11" stroke="#E53935" d="M78.75,44.6c1.26,1.26,1.56,2.77,1.56,4.49c0,0.73,0.05,27.71,0.06,41.9c0,4.76,0,8.08-0.01,8.5"/>
+		</g>
+		<g id="kvg:08a34-g5">
+			<path id="kvg:s-s12" stroke="#FB8C00" d="M68.91,59.73c9.71,3.27,21.84,9.9,26.58,15.47"/>
+		</g>
+	</g>
+</g>
+</g>
+<g id="kvg:StrokeNumbers_08a34" style="font-size:18;font-weight:bold;stroke:#fff;stroke-width:1.5;paint-order:stroke">
+	<text transform="matrix(1 0 0 1 20.25 14.50)" fill="#E53935">1</text>
+	<text transform="matrix(1 0 0 1 5.25 34.55)" fill="#FB8C00">2</text>
+	<text transform="matrix(1 0 0 1 12.50 49.48)" fill="#FDD835">3</text>
+	<text transform="matrix(1 0 0 1 13.50 63.50)" fill="#43A047">4</text>
+	<text transform="matrix(1 0 0 1 12.50 80.83)" fill="#1E88E5">5</text>
+	<text transform="matrix(1 0 0 1 22.50 72.13)" fill="#8E24AA">6</text>
+	<text transform="matrix(1 0 0 1 27.50 88.50)" fill="#EC407A">7</text>
+	<text transform="matrix(1 0 0 1 69.50 14.50)" fill="#00ACC1">8</text>
+	<text transform="matrix(1 0 0 1 48.50 40.50)" fill="#795548">9</text>
+	<text transform="matrix(1 0 0 1 60.75 41.50)" fill="#546E7A">10</text>
+	<text transform="matrix(1 0 0 1 70.50 52.55)" fill="#E53935">11</text>
+	<text transform="matrix(1 0 0 1 62.25 57.50)" fill="#FB8C00">12</text>
+</g>
+</svg>

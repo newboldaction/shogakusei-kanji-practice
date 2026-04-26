@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_06cca" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:06cca">
+	<g id="kvg:06cca-g1">
+		<path id="kvg:s-s1" stroke="#E53935" d="M22.88,15.62c4.45,1.58,11.5,6.5,12.62,8.97"/>
+		<path id="kvg:s-s2" stroke="#FB8C00" d="M17,39.25c4.68,1.5,12.08,6.17,13.25,8.5"/>
+		<path id="kvg:s-s3" stroke="#FDD835" d="M17.25,87.72c1.68,0.73,2.96,0.3,3.97-1.05c3.53-4.69,6.81-10.18,10.03-16.17"/>
+	</g>
+	<g id="kvg:06cca-g2">
+		<g id="kvg:06cca-g3">
+			<path id="kvg:s-s4" stroke="#43A047" d="M69.62,16c0.25,1-0.17,1.88-0.52,2.59C66.12,24.62,62,31.75,55.19,40.46"/>
+		</g>
+		<g id="kvg:06cca-g4">
+			<path id="kvg:s-s5" stroke="#1E88E5" d="M46.44,42.16c1.07,1.07,1.37,2.17,1.37,3.88c0,1.46-0.09,27.72-0.05,41.46c0.01,2.3,0.01,4.28,0.01,5.75"/>
+			<path id="kvg:s-s6" stroke="#8E24AA" d="M48.47,44.43c4.52-0.61,27.92-2.99,35.22-3.72c3.14-0.31,4.94,0.3,4.93,3.91C88.62,48.58,88.8,69.3,88.73,85c-0.01,2.57-0.02,5-0.02,7.21"/>
+			<path id="kvg:s-s7" stroke="#EC407A" d="M48.92,66.15c11.2-1.27,32.33-2.9,39.5-3.26"/>
+			<path id="kvg:s-s8" stroke="#00ACC1" d="M48.94,90.47c10.68-0.97,28.24-2.33,38.54-2.64"/>
+		</g>
+	</g>
+</g>
+</g>
+<g id="kvg:StrokeNumbers_06cca" style="font-size:18;font-weight:bold;stroke:#fff;stroke-width:1.5;paint-order:stroke">
+	<text transform="matrix(1 0 0 1 17.25 16.63)" fill="#E53935">1</text>
+	<text transform="matrix(1 0 0 1 9.75 40.50)" fill="#FB8C00">2</text>
+	<text transform="matrix(1 0 0 1 9.75 92.98)" fill="#FDD835">3</text>
+	<text transform="matrix(1 0 0 1 60.50 15.50)" fill="#43A047">4</text>
+	<text transform="matrix(1 0 0 1 40.50 51.13)" fill="#1E88E5">5</text>
+	<text transform="matrix(1 0 0 1 49.50 39.50)" fill="#8E24AA">6</text>
+	<text transform="matrix(1 0 0 1 52.50 62.50)" fill="#EC407A">7</text>
+	<text transform="matrix(1 0 0 1 52.46 87.50)" fill="#00ACC1">8</text>
+</g>
+</svg>

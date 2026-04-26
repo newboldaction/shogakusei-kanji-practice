@@ -90,9 +90,25 @@ function createPracticeRow(char, opts) {
   const hex = char.codePointAt(0).toString(16).padStart(5, '0');
   const img = document.createElement('img');
   img.className = 'stroke-order';
-  img.src = `data/kanjivg/${hex}.svg`;
   img.alt = char;
-  img.loading = 'lazy';
+  // 書き順データが無い場合（常用漢字外）はお手本＋「書き順未収録」を表示
+  // ※ src 設定前にリスナーを付ける（ブラウザキャッシュ時の取りこぼし防止）
+  img.addEventListener('error', () => {
+    label.classList.add('no-stroke-order');
+    label.innerHTML = '';
+    const fallback = document.createElement('div');
+    fallback.className = 'stroke-order-fallback';
+    const big = document.createElement('span');
+    big.className = 'stroke-order-fallback-char';
+    big.textContent = char;
+    const note = document.createElement('span');
+    note.className = 'stroke-order-fallback-note';
+    note.textContent = '書き順未収録';
+    fallback.appendChild(big);
+    fallback.appendChild(note);
+    label.appendChild(fallback);
+  });
+  img.src = `data/kanjivg/${hex}.svg`;
   label.appendChild(img);
   row.appendChild(label);
 

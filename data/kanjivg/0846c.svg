@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_0846c" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:0846c">
+	<g id="kvg:0846c-g1">
+		<path id="kvg:s-s1" stroke="#E53935" d="M20.5,21.52c2.5,0.73,5.39,0.74,7.76,0.46c14.49-1.73,39.75-3.75,54.12-4.35c2.96-0.12,5.97-0.06,8.88,0.65"/>
+		<path id="kvg:s-s2" stroke="#FB8C00" d="M39.25,11.25c0.91,1,1.2,2.12,1.37,3c1.6,8.25,1.82,9,2.51,13.25"/>
+		<path id="kvg:s-s3" stroke="#FDD835" d="M69.75,9.25c0.42,1.18,0.35,2.27,0,3.75c-1.75,7.5-2,8.62-3.25,12.75"/>
+	</g>
+	<g id="kvg:0846c-g2">
+		<g id="kvg:0846c-g3">
+			<g id="kvg:0846c-g4">
+				<g id="kvg:0846c-g5">
+					<path id="kvg:s-s4" stroke="#43A047" d="M26.67,35.66c2.96,0.34,5.68,0.28,8.33-0.04c12.12-1.49,30.59-3.03,41.12-3.62c2.58-0.15,5.17-0.07,7.74,0.28"/>
+				</g>
+				<g id="kvg:0846c-g6">
+					<path id="kvg:s-s5" stroke="#1E88E5" d="M38.31,38.25c-0.06,0.75-0.09,1.72-0.41,2.39C35.5,45.5,30.75,53,21.86,59.8"/>
+					<path id="kvg:s-s6" stroke="#8E24AA" d="M38.37,44.85c0.23,0.02,1.22,0.07,1.87-0.07c3.52-0.78,6.27-1.28,10.12-2.26c2.09-0.53,3.29,1.27,2.59,2.84C49.77,52.42,36.21,69.06,23,72.71"/>
+					<path id="kvg:s-s7" stroke="#EC407A" d="M32.75,53.62c2.15,0.81,5.56,3.33,6.1,4.59"/>
+				</g>
+			</g>
+			<g id="kvg:0846c-g7">
+				<path id="kvg:s-s8" stroke="#00ACC1" d="M84.91,41.32c-0.03,0.68-0.41,1.3-1,1.73c-3,2.16-8.15,4.57-15.87,6.84"/>
+				<path id="kvg:s-s9" stroke="#795548" d="M63.36,39.3c0.85,0.85,0.99,2.07,0.99,3.08c0,0.76-0.05,8.9-0.05,11.25c0,6.99,2.32,8.09,13.17,8.09c11.27,0,12.52-1.22,13-7.34"/>
+			</g>
+		</g>
+		<g id="kvg:0846c-g8">
+			<g id="kvg:0846c-g9">
+				<path id="kvg:s-s10" stroke="#546E7A" d="M17.38,79.98c3.87,0.9,7.73,0.57,11.13,0.18c16.56-1.87,40.93-3.65,58.5-4.24c3.24-0.11,6.43-0.29,9.62,0.4"/>
+			</g>
+			<g id="kvg:0846c-g10">
+				<path id="kvg:s-s11" stroke="#E53935" d="M42.39,69c0.68,0.68,0.92,2,0.92,3.19c0,10.22-2.8,24.31-16.15,29.31"/>
+			</g>
+			<g id="kvg:0846c-g11">
+				<path id="kvg:s-s12" stroke="#FB8C00" d="M68.05,67c0.97,0.97,1.18,2.12,1.18,4c0,4.96-0.09,15.62-0.09,24c0,2.87,0.03,3.85-0.02,5.5"/>
+			</g>
+		</g>
+	</g>
+</g>
+</g>
+<g id="kvg:StrokeNumbers_0846c" style="font-size:18;font-weight:bold;stroke:#fff;stroke-width:1.5;paint-order:stroke">
+	<text transform="matrix(1 0 0 1 14.25 21.13)" fill="#E53935">1</text>
+	<text transform="matrix(1 0 0 1 30.50 11.50)" fill="#FB8C00">2</text>
+	<text transform="matrix(1 0 0 1 60.75 9.13)" fill="#FDD835">3</text>
+	<text transform="matrix(1 0 0 1 18.75 35.50)" fill="#43A047">4</text>
+	<text transform="matrix(1 0 0 1 28.50 45.50)" fill="#1E88E5">5</text>
+	<text transform="matrix(1 0 0 1 43.50 42.13)" fill="#8E24AA">6</text>
+	<text transform="matrix(1 0 0 1 37.50 53.50)" fill="#EC407A">7</text>
+	<text transform="matrix(1 0 0 1 76.50 41.50)" fill="#00ACC1">8</text>
+	<text transform="matrix(1 0 0 1 55.25 41.75)" fill="#795548">9</text>
+	<text transform="matrix(1 0 0 1 7.50 81.50)" fill="#546E7A">10</text>
+	<text transform="matrix(1 0 0 1 32.50 75.50)" fill="#E53935">11</text>
+	<text transform="matrix(1 0 0 1 56.50 69.50)" fill="#FB8C00">12</text>
+</g>
+</svg>

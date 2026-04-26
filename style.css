@@ -368,6 +368,34 @@ body {
   display: block;
 }
 
+/* 書き順データが無い場合のフォールバック */
+.row-label.no-stroke-order {
+  background: #FFF8F0;
+  border-color: #FFD8A8;
+}
+
+.stroke-order-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1cm;
+}
+
+.stroke-order-fallback-char {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.8cm;
+  font-weight: 700;
+  color: #444;
+  line-height: 1;
+}
+
+.stroke-order-fallback-note {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 0.32cm;
+  color: #B07030;
+}
+
 .practice-squares {
   display: flex;
   gap: 0.15cm;
