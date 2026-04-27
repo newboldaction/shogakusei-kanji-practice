@@ -158,40 +158,136 @@ function hideError() {
   document.getElementById('error-message').classList.add('hidden');
 }
 
-// ===== 履歴機能 =====
-const HISTORY_PREFIX = 'kanji_history_';
-const HISTORY_MAX = 5;
+// ===== 学習ログ（旧「履歴」を全件保存に格上げ） =====
+const LOG_PREFIX = 'kanji_log_';        // 全件保存
+const HISTORY_PREFIX = 'kanji_history_'; // 旧キー（マイグレーション用）
+const RECENT_LIST_MAX = 5;               // 履歴UIに出す件数（ログから抽出）
 const LAST_USER_KEY = 'kanji_last_user';
 
-function getHistoryKey(userName) {
-  return HISTORY_PREFIX + (userName || '_default');
+function getLogKey(userName) {
+  return LOG_PREFIX + (userName || '_default');
 }
 
 function getCurrentUser() {
   return document.getElementById('user-name').value.trim();
 }
 
-function loadHistory() {
-  const key = getHistoryKey(getCurrentUser());
+/**
+ * 旧 history (最新5件) → 新 log (全件) へ移行（1回限り）
+ */
+function migrateHistoryIfNeeded(userName) {
+  const oldKey = HISTORY_PREFIX + (userName || '_default');
+  const newKey = getLogKey(userName);
+  if (localStorage.getItem(newKey) !== null) return;
+  const old = localStorage.getItem(oldKey);
+  if (!old) return;
   try {
-    return JSON.parse(localStorage.getItem(key)) || [];
+    const oldEntries = JSON.parse(old) || [];
+    // 旧 date は表示用文字列なので、ログに変換時はISOにできない → date は今日扱い
+    const today = jstDateString(new Date());
+    const migrated = oldEntries.map((e, i) => ({
+      id: `migrated-${i}`,
+      isoDate: today,
+      ts: Date.now() - i * 60000,
+      kanji: e.kanji || [],
+      label: e.date || '',
+    })).reverse(); // 旧は新しい順、新は古い順で push したい
+    localStorage.setItem(newKey, JSON.stringify(migrated));
+  } catch {}
+}
+
+function loadLog() {
+  const userName = getCurrentUser();
+  migrateHistoryIfNeeded(userName);
+  try {
+    return JSON.parse(localStorage.getItem(getLogKey(userName))) || [];
   } catch {
     return [];
   }
 }
 
-function saveToHistory(kanjiList) {
+function appendLog(kanjiList, settings) {
   const userName = getCurrentUser();
-  const key = getHistoryKey(userName);
-  const history = loadHistory();
-  const entry = {
+  const log = loadLog();
+  const now = new Date();
+  log.push({
+    id: `${now.getTime()}-${Math.random().toString(36).slice(2, 6)}`,
+    isoDate: jstDateString(now),
+    ts: now.getTime(),
     kanji: kanjiList,
-    date: new Date().toLocaleDateString('ja-JP', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }),
-  };
-  history.unshift(entry);
-  if (history.length > HISTORY_MAX) history.length = HISTORY_MAX;
-  localStorage.setItem(key, JSON.stringify(history));
+    settings: settings || {},
+  });
+  localStorage.setItem(getLogKey(userName), JSON.stringify(log));
   if (userName) localStorage.setItem(LAST_USER_KEY, userName);
+}
+
+// ===== 集計ロジック =====
+function jstDateString(date) {
+  // JST (UTC+9) の YYYY-MM-DD
+  const jst = new Date(date.getTime() + 9 * 60 * 60 * 1000);
+  return jst.toISOString().slice(0, 10);
+}
+
+function jstDate(isoDate) {
+  // 'YYYY-MM-DD' をJST 0時として返す
+  return new Date(isoDate + 'T00:00:00+09:00');
+}
+
+function thisWeekRange(now = new Date()) {
+  // 月曜始まり
+  const today = jstDateString(now);
+  const d = jstDate(today);
+  const dow = d.getUTCDay(); // JST 0時の曜日: 0=日, 1=月...
+  const offset = dow === 0 ? 6 : dow - 1;
+  const start = new Date(d.getTime() - offset * 86400000);
+  return { start: jstDateString(start), end: today };
+}
+
+function thisMonthRange(now = new Date()) {
+  const today = jstDateString(now);
+  const start = today.slice(0, 8) + '01';
+  return { start, end: today };
+}
+
+function aggregateDaily(log, fromIso, toIso) {
+  // fromIso〜toIso の各日: シート作成回数
+  const map = {};
+  let cur = jstDate(fromIso);
+  const end = jstDate(toIso);
+  while (cur <= end) {
+    map[jstDateString(cur)] = 0;
+    cur = new Date(cur.getTime() + 86400000);
+  }
+  log.forEach(e => {
+    if (e.isoDate >= fromIso && e.isoDate <= toIso) {
+      map[e.isoDate] = (map[e.isoDate] || 0) + 1;
+    }
+  });
+  return map;
+}
+
+function currentStreak(log, now = new Date()) {
+  // 今日 or 昨日からさかのぼって連続している日数
+  if (log.length === 0) return 0;
+  const days = new Set(log.map(e => e.isoDate));
+  let count = 0;
+  let cursor = jstDate(jstDateString(now));
+  // 今日に記録がなければ、昨日から数える（今日まだ取り組んでなくても連続を維持）
+  if (!days.has(jstDateString(cursor))) {
+    cursor = new Date(cursor.getTime() - 86400000);
+  }
+  while (days.has(jstDateString(cursor))) {
+    count++;
+    cursor = new Date(cursor.getTime() - 86400000);
+  }
+  return count;
+}
+
+function totalKanjiCount(log) {
+  // ログ内に出現したユニーク漢字の数
+  const set = new Set();
+  log.forEach(e => e.kanji.forEach(k => set.add(k)));
+  return set.size;
 }
 
 function updatePrintDate() {
@@ -200,12 +296,24 @@ function updatePrintDate() {
   el.textContent = `${now.getFullYear()}/${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')}`;
 }
 
+function formatLogDate(ts) {
+  const d = new Date(ts);
+  const pad = n => String(n).padStart(2, '0');
+  const today = jstDateString(new Date());
+  const iso = jstDateString(d);
+  const wd = ['日','月','火','水','木','金','土'][new Date(iso + 'T00:00:00+09:00').getUTCDay()];
+  if (iso === today) return `今日 ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  const diffDays = Math.round((jstDate(today) - jstDate(iso)) / 86400000);
+  if (diffDays === 1) return `きのう ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  return `${d.getMonth()+1}/${d.getDate()}(${wd})`;
+}
+
 function renderHistory(onSelect) {
-  const history = loadHistory();
+  const log = loadLog();
   const section = document.getElementById('history-section');
   const list = document.getElementById('history-list');
 
-  if (history.length === 0) {
+  if (log.length === 0) {
     section.classList.add('hidden');
     return;
   }
@@ -213,7 +321,9 @@ function renderHistory(onSelect) {
   section.classList.remove('hidden');
   list.innerHTML = '';
 
-  history.forEach(entry => {
+  // 直近 RECENT_LIST_MAX 件を新しい順で
+  const recent = log.slice(-RECENT_LIST_MAX).reverse();
+  recent.forEach(entry => {
     const li = document.createElement('li');
     li.className = 'history-item';
 
@@ -225,12 +335,84 @@ function renderHistory(onSelect) {
 
     const dateSpan = document.createElement('span');
     dateSpan.className = 'history-date';
-    dateSpan.textContent = entry.date;
+    dateSpan.textContent = entry.ts ? formatLogDate(entry.ts) : (entry.label || '');
 
     li.appendChild(wordsSpan);
     li.appendChild(dateSpan);
     li.addEventListener('click', () => onSelect(entry.kanji));
     list.appendChild(li);
+  });
+}
+
+// ===== ミニダッシュボード =====
+function renderDashboard() {
+  const log = loadLog();
+  const section = document.getElementById('dashboard-section');
+  if (!section) return;
+
+  if (log.length === 0) {
+    section.classList.add('hidden');
+    return;
+  }
+  section.classList.remove('hidden');
+
+  const now = new Date();
+  const week = thisWeekRange(now);
+  const month = thisMonthRange(now);
+  const weekDaily = aggregateDaily(log, week.start, week.end);
+  const monthDaily = aggregateDaily(log, month.start, month.end);
+  const weekCount = Object.values(weekDaily).reduce((a,b)=>a+b, 0);
+  const monthCount = Object.values(monthDaily).reduce((a,b)=>a+b, 0);
+  const weekActive = Object.values(weekDaily).filter(v => v > 0).length;
+  const streak = currentStreak(log, now);
+  const uniqueKanji = totalKanjiCount(log);
+
+  // 統計カード
+  document.getElementById('stat-week').textContent = `${weekCount}回`;
+  document.getElementById('stat-week-days').textContent = `${weekActive}日`;
+  document.getElementById('stat-month').textContent = `${monthCount}回`;
+  document.getElementById('stat-streak').textContent = `${streak}日`;
+  document.getElementById('stat-kanji').textContent = `${uniqueKanji}字`;
+
+  // 直近7日のミニ棒グラフ
+  drawWeeklyChart(now, log);
+}
+
+function drawWeeklyChart(now, log) {
+  const chart = document.getElementById('weekly-chart');
+  if (!chart) return;
+  // 直近7日（今日含む）の日別件数
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(now.getTime() - i * 86400000);
+    const iso = jstDateString(d);
+    days.push({ iso, label: ['日','月','火','水','木','金','土'][new Date(iso + 'T00:00:00+09:00').getUTCDay()], count: 0 });
+  }
+  log.forEach(e => {
+    const found = days.find(d => d.iso === e.isoDate);
+    if (found) found.count++;
+  });
+  const max = Math.max(1, ...days.map(d => d.count));
+  chart.innerHTML = '';
+  days.forEach(d => {
+    const col = document.createElement('div');
+    col.className = 'chart-col';
+    const bar = document.createElement('div');
+    bar.className = 'chart-bar' + (d.count > 0 ? ' has-value' : '');
+    bar.style.height = `${(d.count / max) * 100}%`;
+    bar.title = `${d.iso}: ${d.count}回`;
+    if (d.count > 0) {
+      const val = document.createElement('span');
+      val.className = 'chart-bar-value';
+      val.textContent = d.count;
+      bar.appendChild(val);
+    }
+    const lbl = document.createElement('span');
+    lbl.className = 'chart-label' + (d.iso === jstDateString(now) ? ' today' : '');
+    lbl.textContent = d.label;
+    col.appendChild(bar);
+    col.appendChild(lbl);
+    chart.appendChild(col);
   });
 }
 
@@ -359,7 +541,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       showStrokes: document.getElementById('opt-strokes').checked,
     };
 
-    saveToHistory(kanjiList);
+    appendLog(kanjiList, opts);
     updatePrintDate();
     generateSheet(kanjiList, opts);
     inputScreen.classList.add('hidden');
@@ -375,10 +557,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     practiceSheet.classList.add('hidden');
     inputScreen.classList.remove('hidden');
     renderHistory(selectFromHistory);
+    renderDashboard();
   });
 
   userName.addEventListener('input', () => {
     renderHistory(selectFromHistory);
+    renderDashboard();
   });
 
   function selectFromHistory(kanjiList) {
@@ -393,4 +577,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   renderHistory(selectFromHistory);
+  renderDashboard();
 });

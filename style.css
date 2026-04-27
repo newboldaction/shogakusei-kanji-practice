@@ -91,6 +91,121 @@ body {
   margin-bottom: 0.8rem;
 }
 
+/* ===== ダッシュボード ===== */
+.dashboard {
+  background: linear-gradient(135deg, #F1F8E9, #ffffff);
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.6rem 0.3rem;
+  background: #fff;
+  border: 1px solid #DCEDC8;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #666;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2E7D32;
+  line-height: 1.2;
+}
+
+.stat-sub {
+  font-size: 0.7rem;
+  color: #888;
+}
+
+.chart-wrap {
+  background: #fff;
+  border: 1px solid #DCEDC8;
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem 0.4rem;
+}
+
+.chart-title {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.4rem;
+}
+
+.weekly-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 80px;
+  gap: 0.3rem;
+}
+
+.chart-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  gap: 0.25rem;
+}
+
+.chart-bar {
+  width: 100%;
+  min-height: 2px;
+  background: #E8F5E9;
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  flex: 1;
+  transition: height 0.3s ease;
+}
+
+.chart-bar.has-value {
+  background: #66BB6A;
+}
+
+.chart-bar-value {
+  position: absolute;
+  top: -1.1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #2E7D32;
+}
+
+.chart-label {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.chart-label.today {
+  color: #2E7D32;
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stat-value {
+    font-size: 1.1rem;
+  }
+}
+
 /* ===== 学年タブ ===== */
 .grade-tabs {
   display: flex;

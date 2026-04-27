@@ -24,6 +24,34 @@
         <input type="text" id="user-name" placeholder="れい: たろう" autocomplete="off">
       </div>
 
+      <!-- 学習ダッシュボード -->
+      <section id="dashboard-section" class="block dashboard hidden">
+        <h2 class="block-title">学習きろく</h2>
+        <div class="stats-row">
+          <div class="stat-card">
+            <span class="stat-label">今週</span>
+            <span class="stat-value" id="stat-week">0回</span>
+            <span class="stat-sub">活動 <span id="stat-week-days">0日</span></span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">今月</span>
+            <span class="stat-value" id="stat-month">0回</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">連続</span>
+            <span class="stat-value" id="stat-streak">0日</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">練習した漢字</span>
+            <span class="stat-value" id="stat-kanji">0字</span>
+          </div>
+        </div>
+        <div class="chart-wrap">
+          <div class="chart-title">この1週間</div>
+          <div id="weekly-chart" class="weekly-chart"></div>
+        </div>
+      </section>
+
       <!-- 学年タブ -->
       <section class="block">
         <h2 class="block-title">学年から選ぶ</h2>
@@ -97,6 +125,6 @@
     <p>&copy; 2026 newboldaction. All rights reserved.</p>
   </footer>
 
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
